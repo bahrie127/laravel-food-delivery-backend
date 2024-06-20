@@ -1,0 +1,948 @@
+{
+	"info": {
+		"_postman_id": "1a69f06d-1a02-48b8-b8f6-3304089f6568",
+		"name": "FIC18-FoodDeliveryOrder",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3117985",
+		"_collection_link": "https://bold-satellite-2123.postman.co/workspace/New-Team-Workspace~82ebd54c-ab06-414e-a28c-44644a99c1b6/collection/3117985-1a69f06d-1a02-48b8-b8f6-3304089f6568?action=share&source=collection_link&creator=3117985"
+	},
+	"item": [
+		{
+			"name": "user register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"bahri fic18\",\n    \"email\":\"bahri@fic18.com\",\n    \"password\":\"12345678\",\n    \"phone\":\"085640998887\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/user/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"user",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "restaurant register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Rozali",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "kenangan@fic18.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "12345678\n",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "08563432423",
+							"type": "text"
+						},
+						{
+							"key": "restaurant_name",
+							"value": "Kopi Kenangan",
+							"type": "text"
+						},
+						{
+							"key": "restaurant_address",
+							"value": "Jalan kaliurang km 8, Sleman",
+							"type": "text"
+						},
+						{
+							"key": "photo",
+							"type": "file",
+							"src": "/Users/bahri/Pictures/menu7.png"
+						},
+						{
+							"key": "latlong",
+							"value": "21321321,4353243",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/restaurant/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"restaurant",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "driver register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Bambang",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "bambang@fic18.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "12345678\n",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "08563432423",
+							"type": "text"
+						},
+						{
+							"key": "photo",
+							"type": "file",
+							"src": "/Users/bahri/Pictures/menu7.png"
+						},
+						{
+							"key": "license_plate",
+							"value": "AB2342DD",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/driver/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"driver",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\"bahri@fic18.com\",\n    \"password\":\"12345678\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get user",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 2|MV6Rnsc7LzsemoYjsGFWefwbYk2zM7cefiI3fEF4a04c0c15",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\"bambang@fic18.com\",\n    \"password\":\"12345678\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "logout",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 3|bceCZV0F5Hbc7TwMpLNBkjdGXRAyiPrqZFuoqEZe411a667d",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/logout",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update latlong",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 4|6n1CTfxfnYnabhu1nXfDiiITHo5H2ZTcUR5YFlrx40c5e328",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"latlong\":\"234324,42343243\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/user/update-latlong",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"user",
+						"update-latlong"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all restaurant",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 2|MV6Rnsc7LzsemoYjsGFWefwbYk2zM7cefiI3fEF4a04c0c15",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\"bambang@fic18.com\",\n    \"password\":\"12345678\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/restaurant",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"restaurant"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create product",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"warning": "This is a duplicate header and will be overridden by the Content-Type header generated by Postman.",
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 5|coHrKkjAQ9MUcS7XkRe9lYzy2iGk8rk33d56sGjCa16dc697",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Jus Alpukat",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "Panas Haus cocok jus alpukat",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "20000",
+							"type": "text"
+						},
+						{
+							"key": "stock",
+							"value": "1000",
+							"type": "text"
+						},
+						{
+							"key": "is_available",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "is_favorite",
+							"value": "0",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/Users/bahri/Pictures/drink3.png"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update product",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"warning": "This is a duplicate header and will be overridden by the Content-Type header generated by Postman.",
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 5|coHrKkjAQ9MUcS7XkRe9lYzy2iGk8rk33d56sGjCa16dc697",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"Jus Alpokat\",\n    \"description\": \"Haus Minum Jus\",\n    \"price\":25000,\n    \"stock\":100,\n    \"is_available\":1,\n    \"is_favorite\":1\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/products/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"products",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete product",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"warning": "This is a duplicate header and will be overridden by the Content-Type header generated by Postman.",
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 5|coHrKkjAQ9MUcS7XkRe9lYzy2iGk8rk33d56sGjCa16dc697",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"Jus Alpokat\",\n    \"description\": \"Haus Minum Jus\",\n    \"price\":25000,\n    \"stock\":100,\n    \"is_available\":1,\n    \"is_favorite\":1\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/products/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"products",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get product by restaurant",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"warning": "This is a duplicate header and will be overridden by the Content-Type header generated by Postman.",
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 5|coHrKkjAQ9MUcS7XkRe9lYzy2iGk8rk33d56sGjCa16dc697",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Jus Mangga",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "Panas Haus cocok jus mangga",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "18000",
+							"type": "text"
+						},
+						{
+							"key": "stock",
+							"value": "1000",
+							"type": "text"
+						},
+						{
+							"key": "is_available",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "is_favorite",
+							"value": "0",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/Users/bahri/Pictures/drink1.png"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get order by restaurant",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 5|coHrKkjAQ9MUcS7XkRe9lYzy2iGk8rk33d56sGjCa16dc697",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\"bambang@fic18.com\",\n    \"password\":\"12345678\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/order/restaurant?status=pending",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"order",
+						"restaurant"
+					],
+					"query": [
+						{
+							"key": "status",
+							"value": "pending"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create order",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"warning": "This is a duplicate header and will be overridden by the Content-Type header generated by Postman.",
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 5|coHrKkjAQ9MUcS7XkRe9lYzy2iGk8rk33d56sGjCa16dc697",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"restaurant_id\":2,\n    \"shipping_cost\":10000,\n    \"order_items\":[\n        {\n            \"product_id\": 2,\n            \"quantity\":2\n        }\n    ]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/order",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"order"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update order by restaurant",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"warning": "This is a duplicate header and will be overridden by the Content-Type header generated by Postman.",
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 5|coHrKkjAQ9MUcS7XkRe9lYzy2iGk8rk33d56sGjCa16dc697",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"status\":\"prepared\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/order/restaurant/update-status/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"order",
+						"restaurant",
+						"update-status",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get order by driver",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"warning": "This is a duplicate header and will be overridden by the Content-Type header generated by Postman.",
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 5|coHrKkjAQ9MUcS7XkRe9lYzy2iGk8rk33d56sGjCa16dc697",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"status\":\"ready_for_delivery\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/order/driver",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"order",
+						"driver"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update order by driver",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"warning": "This is a duplicate header and will be overridden by the Content-Type header generated by Postman.",
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 5|coHrKkjAQ9MUcS7XkRe9lYzy2iGk8rk33d56sGjCa16dc697",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"status\":\"delivered\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/order/driver/update-status/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"order",
+						"driver",
+						"update-status",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get order by user",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"warning": "This is a duplicate header and will be overridden by the Content-Type header generated by Postman.",
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 5|coHrKkjAQ9MUcS7XkRe9lYzy2iGk8rk33d56sGjCa16dc697",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"status\":\"ready_for_delivery\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/order/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"order",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update order by user",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"warning": "This is a duplicate header and will be overridden by the Content-Type header generated by Postman.",
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 5|coHrKkjAQ9MUcS7XkRe9lYzy2iGk8rk33d56sGjCa16dc697",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"status\":\"processing\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/order/user/update-status/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"order",
+						"user",
+						"update-status",
+						"3"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
