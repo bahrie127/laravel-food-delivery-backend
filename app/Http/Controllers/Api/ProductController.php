@@ -13,7 +13,9 @@ class ProductController extends Controller
     {
 
         //get product by request user id
-        $products = Product::with('user')->where('user_id', $request->user()->id)->get();
+        $products = Product::with('user')->where('user_id', $request->user()->id)
+            ->orderBy('created_at', 'DESC')
+            ->get();
 
         // $products = Product::with('user')->whereHas('user', function ($query) use ($request) {
         //     $query->where('roles', 'restaurant');
@@ -72,7 +74,7 @@ class ProductController extends Controller
             'status' => 'success',
             'message' => 'Product added successfully',
             'data' => $product
-        ]);
+        ], 201);
     }
 
     //update
