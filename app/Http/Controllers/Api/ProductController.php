@@ -29,9 +29,9 @@ class ProductController extends Controller
     }
 
     //get product by user id
-    public function getProductByUserId(Request $request)
+    public function getProductByUserId($userId)
     {
-        $products = Product::with('user')->where('user_id', $request->user_id)->get();
+        $products = Product::with('user')->where('user_id', $userId)->get();
 
         return response()->json([
             'status' => 'success',

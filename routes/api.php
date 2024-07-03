@@ -30,6 +30,9 @@ Route::get('/restaurant', [App\Http\Controllers\Api\AuthController::class, 'getR
 
 Route::apiResource('/products', App\Http\Controllers\Api\ProductController::class)->middleware('auth:sanctum');
 
+//get product by user id
+Route::get('/restaurant/{userId}/products', [App\Http\Controllers\Api\ProductController::class, 'getProductByUserId'])->middleware('auth:sanctum');
+
 //order
 Route::post('/order', [App\Http\Controllers\Api\OrderController::class, 'createOrder'])->middleware('auth:sanctum');
 
