@@ -6,10 +6,18 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "kreait/laravel-firebase": "^5.9",
         "laravel/framework": "^11.9",
         "laravel/sanctum": "^4.0",
-        "laravel/tinker": "^2.9"
+        "laravel/tinker": "^2.9",
+        "xendit/xendit-php": "^5.0"
     },
+    "repositories": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/xendit/xendit-php.git"
+        }
+      ],
     "require-dev": {
         "fakerphp/faker": "^1.23",
         "laravel/pint": "^1.13",

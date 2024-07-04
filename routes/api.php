@@ -25,6 +25,11 @@ Route::post('/logout', [App\Http\Controllers\Api\AuthController::class, 'logout'
 //update latlong
 Route::put('/user/update-latlong', [App\Http\Controllers\Api\AuthController::class, 'updateLatLong'])->middleware('auth:sanctum');
 
+//update fcm id
+Route::put('/user/update-fcm', [App\Http\Controllers\Api\AuthController::class, 'updateFcmId'])->middleware('auth:sanctum');
+
+
+
 //get all restaurant
 Route::get('/restaurant', [App\Http\Controllers\Api\AuthController::class, 'getRestaurant']);
 
@@ -35,6 +40,14 @@ Route::get('/restaurant/{userId}/products', [App\Http\Controllers\Api\ProductCon
 
 //order
 Route::post('/order', [App\Http\Controllers\Api\OrderController::class, 'createOrder'])->middleware('auth:sanctum');
+
+//get payment method
+Route::get('/payment-methods', [App\Http\Controllers\Api\OrderController::class, 'getPaymentMethod']);
+
+//purchase order
+Route::post('/purchase', [App\Http\Controllers\Api\OrderController::class, 'purchaseOrder'])->middleware('auth:sanctum');
+
+Route::post('/xendit-callback', [App\Http\Controllers\Api\OrderController::class, 'webhook']);
 
 
 //get order by user id

@@ -29,6 +29,7 @@ class User extends Authenticatable
         'restaurant_address',
         'photo',
         'latlong',
+        'fcm_id',
     ];
 
     /**

@@ -171,4 +171,21 @@ class AuthController extends Controller
             'data' => $restaurant
         ]);
     }
+
+    //update fcm id
+    public function updateFcmId(Request $request)
+    {
+        $request->validate([
+            'fcm_id' => 'required|string',
+        ]);
+
+        $user = $request->user();
+        $user->fcm_id = $request->fcm_id;
+        $user->save();
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'FCM ID updated successfully'
+        ], 200);
+    }
 }
