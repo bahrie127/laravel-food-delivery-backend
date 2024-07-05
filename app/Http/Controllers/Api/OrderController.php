@@ -344,7 +344,7 @@ class OrderController extends Controller
 
     public function __construct()
     {
-        Configuration::setXenditKey('xnd_production_Df7zy1YOav5w5bcJXzJVHpNnbXU9x4r7FfCZfJN2p1PVOGriq4Qm968k723rOxtw');
+        Configuration::setXenditKey('xnd_development_2WdZYFWXIGBXjQ78cNNIxdzqJ3tiSQZyyjmNkOQvAXhtKl7UTIy533kYioq171');
     }
 
     ///One-Time Payment via Redirect URL Xendit
