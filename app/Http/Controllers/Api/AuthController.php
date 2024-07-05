@@ -147,10 +147,12 @@ class AuthController extends Controller
     {
         $request->validate([
             'latlong' => 'required|string',
+            'address' => 'required|string',
         ]);
 
         $user = $request->user();
         $user->latlong = $request->latlong;
+        $user->address = $request->address;
         $user->save();
 
         return response()->json([

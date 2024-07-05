@@ -12,6 +12,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Log;
 use Kreait\Firebase\Messaging\CloudMessage;
 use Kreait\Firebase\Messaging\Notification;
+use Xendit\Configuration;
 
 class OrderController extends Controller
 {
@@ -63,7 +64,7 @@ class OrderController extends Controller
             'status' => 'success',
             'message' => 'Order created successfully',
             'data' => $order
-        ]);
+        ], 201);
     }
 
     //update purchase status
@@ -341,6 +342,11 @@ class OrderController extends Controller
         return response()->json(['message' => 'Invalid callback data'], 400);
     }
 
+    public function __construct()
+    {
+        Configuration::setXenditKey('xnd_production_Df7zy1YOav5w5bcJXzJVHpNnbXU9x4r7FfCZfJN2p1PVOGriq4Qm968k723rOxtw');
+    }
+
     ///One-Time Payment via Redirect URL Xendit
     public function purchaseOrder(Request $request, $orderId)
     {
@@ -397,8 +403,8 @@ class OrderController extends Controller
                     'status' => 'pending',
                     'xendit_id' => $result['id'],
                 ]);
-                $order->payment_method = 'e_wallet';
-                $order->payment_e_wallet = $validated['payment_e_wallet'];
+                $order->payment_method = $validated['payment_e_wallet'];
+                // $order->payment_e_wallet = ;
                 $order->save();
 
                 return response()->json(['message' => 'Payment created successfully', 'order' => $order, 'payment' => $result], 200);

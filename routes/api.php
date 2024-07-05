@@ -42,10 +42,10 @@ Route::get('/restaurant/{userId}/products', [App\Http\Controllers\Api\ProductCon
 Route::post('/order', [App\Http\Controllers\Api\OrderController::class, 'createOrder'])->middleware('auth:sanctum');
 
 //get payment method
-Route::get('/payment-methods', [App\Http\Controllers\Api\OrderController::class, 'getPaymentMethod']);
+Route::get('/payment-methods', [App\Http\Controllers\Api\OrderController::class, 'getPaymentMethods']);
 
 //purchase order
-Route::post('/purchase', [App\Http\Controllers\Api\OrderController::class, 'purchaseOrder'])->middleware('auth:sanctum');
+Route::post('/purchase/{orderId}', [App\Http\Controllers\Api\OrderController::class, 'purchaseOrder'])->middleware('auth:sanctum');
 
 Route::post('/xendit-callback', [App\Http\Controllers\Api\OrderController::class, 'webhook']);
 
