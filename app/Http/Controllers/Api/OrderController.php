@@ -77,6 +77,7 @@ class OrderController extends Controller
         $order = Order::find($id);
         $order->status = $request->status;
         $order->save();
+        $this->sendNotification($order->restaurant_id, 'Order Purchased', 'An order has been purchased and is ready to be prepared.');
 
         return response()->json([
             'status' => 'success',
@@ -131,6 +132,26 @@ class OrderController extends Controller
         ]);
     }
 
+    //get orders by status for restaurant
+    public function getOrdersByRestaurantId(Request $request)
+    {
+        // $request->validate([
+        //     'status' => 'required|string|in:pending,processing,completed,cancelled',
+        // ]);
+
+        $user = $request->user();
+        $orders = Order::where('restaurant_id', $user->id)
+            ->get();
+        //->where('status', $request->status)
+
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Get all orders by status',
+            'data' => $orders
+        ]);
+    }
+
     //update order status for restaurant
     public function updateOrderStatus(Request $request, $id)
     {
@@ -141,6 +162,14 @@ class OrderController extends Controller
         $order = Order::find($id);
         $order->status = $request->status;
         $order->save();
+
+        if ($request->status == 'ready_for_delivery') {
+            $this->sendNotificationDriver('Order Ready for Delivery', 'An order is ready for delivery.');
+        } else {
+            $this->sendNotification($order->user_id, 'Order Prepared', 'An order has been prepared by Restaurant.');
+        }
+
+
 
         return response()->json([
             'status' => 'success',
@@ -193,6 +222,8 @@ class OrderController extends Controller
         $order = Order::find($id);
         $order->status = $request->status;
         $order->save();
+
+        $this->sendNotification($order->user_id, 'Order On The Way', 'An order Delivery to your address.');
 
         return response()->json([
             'status' => 'success',
@@ -296,6 +327,29 @@ class OrderController extends Controller
                 Log::error('Failed to send notification', ['error' => $e->getMessage()]);
             }
         }
+    }
+
+    public function sendNotificationDriver($title, $message)
+    {
+        // $restaurant = User::find($userId);
+        // if ($restaurant && $restaurant->fcm_id) {
+        // $token = $restaurant->fcm_id;
+
+
+        $messaging = app('firebase.messaging');
+        $notification = Notification::create($title, $message);
+
+        $message = CloudMessage::withTarget('topic', 'driver')
+            ->withNotification($notification);
+
+
+
+        try {
+            $messaging->send($message);
+        } catch (\Exception $e) {
+            Log::error('Failed to send notification', ['error' => $e->getMessage()]);
+        }
+        // }
     }
 
     //Callback / webhook
@@ -421,5 +475,15 @@ class OrderController extends Controller
 
             return response()->json(['message' => 'Order purchased successfully', 'order' => $order], 200);
         }
+    }
+
+    public function getOrdersWaitingPickup()
+    {
+        $orders = Order::where('status', 'ready_for_delivery')->with('user', 'restaurant')->get();
+
+        return response()->json([
+            'message' => 'Orders retrieved successfully',
+            'orders' => $orders,
+        ], 200);
     }
 }

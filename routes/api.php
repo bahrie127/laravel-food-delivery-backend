@@ -54,7 +54,7 @@ Route::post('/xendit-callback', [App\Http\Controllers\Api\OrderController::class
 Route::get('/order/user', [App\Http\Controllers\Api\OrderController::class, 'orderHistory'])->middleware('auth:sanctum');
 
 //get order by restaurant id
-Route::get('/order/restaurant', [App\Http\Controllers\Api\OrderController::class, 'getOrdersByStatus'])->middleware('auth:sanctum');
+//Route::get('/order/restaurant', [App\Http\Controllers\Api\OrderController::class, 'getOrdersByStatus'])->middleware('auth:sanctum');
 
 //get order by driver id
 Route::get('/order/driver', [App\Http\Controllers\Api\OrderController::class, 'getOrdersByStatusDriver'])->middleware('auth:sanctum');
@@ -67,3 +67,12 @@ Route::put('/order/driver/update-status/{id}', [App\Http\Controllers\Api\OrderCo
 
 //update purchase status
 Route::put('/order/user/update-status/{id}', [App\Http\Controllers\Api\OrderController::class, 'updatePurchaseStatus'])->middleware('auth:sanctum');
+
+//get order by restaurant id
+Route::get('/order/restaurant', [App\Http\Controllers\Api\OrderController::class, 'getOrdersByRestaurantId'])->middleware('auth:sanctum');
+
+//get order by status waiting pickup
+Route::get('/order/driver/waiting-pickup', [App\Http\Controllers\Api\OrderController::class, 'getOrdersWaitingPickup'])->middleware('auth:sanctum');
+
+//get order by status on the way
+Route::put('/order/driver/update-status/{id}', [App\Http\Controllers\Api\OrderController::class, 'updateOrderStatusDriver'])->middleware('auth:sanctum');
