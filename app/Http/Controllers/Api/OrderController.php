@@ -29,8 +29,21 @@ class OrderController extends Controller
         ]);
 
         $totalPrice = 0;
+        $firstProduct = null;
+
         foreach ($request->order_items as $item) {
             $product = Product::find($item['product_id']);
+
+            // Validasi untuk memastikan semua produk berasal dari restoran yang sama
+            if ($firstProduct === null) {
+                $firstProduct = $product;
+            } elseif ($product->user_id !== $firstProduct->user_id) {
+                return response()->json([
+                    'status' => 'failed',
+                    'message' => 'All products in the order must be from the same restaurant'
+                ], 422);
+            }
+
             $totalPrice += $product->price * $item['quantity'];
         }
 

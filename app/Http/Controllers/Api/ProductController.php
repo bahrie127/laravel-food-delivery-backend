@@ -31,7 +31,7 @@ class ProductController extends Controller
     //get product by user id
     public function getProductByUserId($userId)
     {
-        $products = Product::with('user')->where('user_id', $userId)->get();
+        $products = Product::where('user_id', $userId)->get();
 
         return response()->json([
             'status' => 'success',

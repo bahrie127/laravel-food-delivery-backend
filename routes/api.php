@@ -20,7 +20,7 @@ Route::post('/driver/register', [App\Http\Controllers\Api\AuthController::class,
 Route::post('/login', [App\Http\Controllers\Api\AuthController::class, 'login']);
 
 //logout
-Route::post('/logout', [App\Http\Controllers\Api\AuthController::class, 'logout'])->middleware('auth:sanctum');
+Route::post('/logout', [App\Http\Controllers\Api\AuthController::class, 'clear'])->middleware('auth:sanctum');
 
 //update latlong
 Route::put('/user/update-latlong', [App\Http\Controllers\Api\AuthController::class, 'updateLatLong'])->middleware('auth:sanctum');
@@ -37,6 +37,14 @@ Route::apiResource('/products', App\Http\Controllers\Api\ProductController::clas
 
 //get product by user id
 Route::get('/restaurant/{userId}/products', [App\Http\Controllers\Api\ProductController::class, 'getProductByUserId'])->middleware('auth:sanctum');
+
+//get total by restaurant
+Route::prefix('/total')->middleware('auth:sanctum')->group(function () {
+    Route::get('/product', [App\Http\Controllers\Api\TotalCounterController::class, 'getTotalProduct']);
+    Route::get('/order', [App\Http\Controllers\Api\TotalCounterController::class, 'getTotalOrder']);
+    Route::get('/today-transaction', [App\Http\Controllers\Api\TotalCounterController::class, 'getTodayTransaction']);
+    Route::get('/income', [App\Http\Controllers\Api\TotalCounterController::class, 'getTotalIncome']);
+});
 
 //order
 Route::post('/order', [App\Http\Controllers\Api\OrderController::class, 'createOrder'])->middleware('auth:sanctum');

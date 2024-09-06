@@ -17,6 +17,7 @@ class AuthController extends Controller
             'email' => 'required|email|unique:users,email',
             'password' => 'required|string|min:6',
             'phone' => 'required|string',
+            'photo' => 'required|image',
         ]);
 
         $data = $request->all();
@@ -24,6 +25,14 @@ class AuthController extends Controller
         $data['roles'] = 'user';
 
         $user = User::create($data);
+
+        if ($request->hasFile('photo')) {
+            $photo = $request->file('photo');
+            $photo_name = time() . '.' . $photo->getClientOriginalExtension();
+            $photo->move(public_path('images'), $photo_name);
+            $user->photo = $photo_name;
+            $user->save();
+        }
 
         return response()->json([
             'status' => 'success',
