@@ -215,9 +215,9 @@ class OrderController extends Controller
     //update order status for driver
     public function updateOrderStatusDriver(Request $request, $id)
     {
-        $request->validate([
-            'status' => 'required|string|in:pending,processing,completed,cancelled,on_the_way,delivered',
-        ]);
+        // $request->validate([
+        //     'status' => 'required|string|in:pending,processing,completed,cancelled,on_the_way,delivered',
+        // ]);
 
         $order = Order::find($id);
         $order->status = $request->status;
