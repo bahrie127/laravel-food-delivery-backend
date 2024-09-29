@@ -90,7 +90,7 @@ class OrderController extends Controller
     public function orderHistory(Request $request)
     {
         $user = $request->user();
-        $orders = Order::where('user_id', $user->id)->get();
+        $orders = Order::where('user_id', $user->id)->with('user', 'restaurant', 'orderItems.product')->get();
 
         return response()->json([
             'status' => 'success',
