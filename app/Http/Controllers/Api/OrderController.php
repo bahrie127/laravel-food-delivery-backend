@@ -479,7 +479,7 @@ class OrderController extends Controller
 
     public function getOrdersWaitingPickup()
     {
-        $orders = Order::where('status', 'ready_for_delivery')->with('user', 'restaurant')->get();
+        $orders = Order::with('user', 'restaurant')->get();
 
         return response()->json([
             'message' => 'Orders retrieved successfully',
