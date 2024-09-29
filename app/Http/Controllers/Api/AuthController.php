@@ -130,8 +130,8 @@ class AuthController extends Controller
         if ($request->hasFile('photo')) {
             $photo = $request->file('photo');
             $photo_name = time() . '.' . $photo->getClientOriginalExtension();
-            $photo->move(public_path('images'), $photo_name);
-            $user->photo = $photo_name;
+            $filePath = $photo->storeAs('images/drivers', $photo_name, 'public');
+            $user->photo = $filePath;
             $user->save();
         }
 
