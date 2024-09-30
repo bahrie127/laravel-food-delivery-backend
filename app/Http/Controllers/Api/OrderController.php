@@ -223,7 +223,7 @@ class OrderController extends Controller
         $order->status = $request->status;
         $order->save();
 
-        $this->sendNotification($order->user_id, 'Order On The Way', 'An order Delivery to your address.');
+        // $this->sendNotification($order->user_id, 'Order On The Way', 'An order Delivery to your address.');
 
         return response()->json([
             'status' => 'success',
