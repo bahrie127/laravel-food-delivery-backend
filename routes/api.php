@@ -20,7 +20,7 @@ Route::post('/driver/register', [App\Http\Controllers\Api\AuthController::class,
 Route::post('/login', [App\Http\Controllers\Api\AuthController::class, 'login']);
 
 //logout
-Route::post('/logout', [App\Http\Controllers\Api\AuthController::class, 'clear'])->middleware('auth:sanctum');
+Route::post('/logout', [App\Http\Controllers\Api\AuthController::class, 'logout'])->middleware('auth:sanctum');
 
 //update latlong
 Route::put('/user/update-latlong', [App\Http\Controllers\Api\AuthController::class, 'updateLatLong'])->middleware('auth:sanctum');
