@@ -495,7 +495,7 @@ class OrderController extends Controller
 
     public function getOrdersWaitingPickup()
     {
-        $orders = Order::where('status', 'ready_for_delivery')->with('user', 'restaurant')->get();
+        $orders = Order::whereIn('status', ['ready_for_delivery', 'on_the_way'])->with('user', 'restaurant')->get();
 
         return response()->json([
             'message' => 'Orders retrieved successfully',
